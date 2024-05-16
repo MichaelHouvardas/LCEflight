@@ -80,7 +80,7 @@ public abstract class LocalPlayerMixin extends AbstractClientPlayer {
                 if (lastOnGround && getDeltaMovement().y != 0) setDeltaMovement(getDeltaMovement().add(0,-getDeltaMovement().y,0));
             }
             if (getXRot() != 0 && (!lastOnGround || getXRot() < 0 || getXRot() > 45) && input.hasForwardImpulse() && isSprinting()) {
-                setDeltaMovement(getDeltaMovement().add(0, -Math.sin(Math.toRadians(getXRot())) * input.forwardImpulse * getFlyingSpeed(), 0));
+                setDeltaMovement(getDeltaMovement().add(0, -Math.sin(Math.toRadians(getXRot())) * input.forwardImpulse * getFlyingSpeed() * 2, 0));
             }
         }
     }

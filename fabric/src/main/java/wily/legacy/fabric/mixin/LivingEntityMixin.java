@@ -17,7 +17,7 @@ public abstract class LivingEntityMixin extends Entity {
         super(entityType, level);
     }
 
-    @Redirect(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;onGround()Z", ordinal = 2))
+    @Redirect(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;onGround()Z", ordinal = 1))
     public boolean travelFlight(LivingEntity instance) {
         return true;
     }
