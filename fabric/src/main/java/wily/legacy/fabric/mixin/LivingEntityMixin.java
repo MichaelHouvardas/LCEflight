@@ -17,12 +17,12 @@ public abstract class LivingEntityMixin extends Entity {
         super(entityType, level);
     }
 
-    @Redirect(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;onGround()Z", ordinal = 1))
+    @Redirect(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/entity/LivingEntity;onGround()Z", ordinal = 2))
     public boolean travelFlight(LivingEntity instance) {
         return true;
     }
     @Redirect(method = "travel", at = @At(value = "INVOKE", target = "Lnet/minecraft/world/level/block/Block;getFriction()F"))
     public float travelFlight(Block instance) {
-        return (LivingEntity)(Object)this instanceof Player p && p.getAbilities().flying && (!level().isClientSide || Legacy4JClient.isModEnabledOnServer()) ? 0.6f : onGround() ? instance.getFriction() : 1f;
+        return (LivingEntity)(Object)this instanceof Player p && p.getAbilities().flying && (!level().isClientSide || Legacy4JClient.isModEnabledOnServer()) ? 0.6f : onGround() ? instance.getFriction() : 1.1f;
     }
 }
